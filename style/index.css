@@ -1,0 +1,19 @@
+.number {
+    border: 1px solid black;
+    padding: 15px;
+    margin-right: 16px;
+    border-radius: 8px
+}
+
+.mt15 > div {
+    margin-top: 15px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.rb {
+    color: red;
+    font-weight: bold;
+}
