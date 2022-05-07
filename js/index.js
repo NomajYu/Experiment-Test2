@@ -4,6 +4,7 @@ let jsPsych = initJsPsych({
         jsPsych.data.get().localSave('csv', expName);
     }
 });
+
 let expName = '实验结果';
 let timeline = []
 let arrayOfMan = [];
@@ -18,6 +19,36 @@ let targetPath = 'asset/img/target/';
 let voicePath = 'asset/audio/';
 let arrayOfPractice = [];
 let keyInfo = '';
+let pId = '';
+let jData = {
+    'a': '1',
+    'b': '2'
+}
+
+function upload(pData) {
+    $.ajax({
+        //请求方式
+        type : 'post',
+        //请求地址
+        url : 'http://localhost:3000/api/myFirstApi',
+        contentType: "application/json",
+        //数据，json字符串
+        data: {
+            'name':'yu'
+        },
+       //请求成功
+        success : function(msg) {
+            console.log(msg);
+        },
+        //请求失败，包含具体的错误信息
+        error : function(e){
+            console.log(e);
+            alert('上传失败！请停留在此页面，并与主试联系，避免数据丢失。')
+        }
+    });
+}
+    
+
 
 //洗牌算法
 Array.prototype.shuffle = function () {
@@ -161,7 +192,7 @@ let participantInfo = {
     button_label: "进入实验",
     on_finish: function (data) {
         expName = expName + data.response.pId + ".csv";
-        // let id = parseInt(data.response.pId)
+        pId = parseInt(data.response.pId)
         // if (id % 2 === 0) {
         //     keyInfo = "J"
         // } else {
@@ -332,6 +363,17 @@ var leave_fullscreen = {
     }
 }
 
+//上传实验数据
+let upLoadData = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: `<div>正在上传实验数据，请稍后</div>`,
+    on_start: function () {
+        var pData = jsPsych.data.get().json()
+        // let pData = '1';
+        upload(pData);
+    }
+}
+
 //实验结束提示
 let end = {
     type: jsPsychHtmlKeyboardResponse,
@@ -382,8 +424,11 @@ let block_2 = {
 }
 
 timeline.push(
-    preload, enter_fullscreen, participantInfo, instructions, practice_trials,
-    block_1, rest, notice, block_2,
+    // preload, enter_fullscreen, 
+    participantInfo, 
+    // instructions, practice_trials,
+    // block_1, rest, notice, block_2,
+    upLoadData,
     leave_fullscreen, end
 )
 
