@@ -10,9 +10,6 @@ let cuePath = 'asset/img/cue/';
 let targetPath = 'asset/img/target/';
 let voicePath = 'asset/audio/';
 let arrayOfPractice = [];
-let message = '';
-let uploadStatus = 0
-let newTrial = ''
 
 //洗牌算法
 Array.prototype.shuffle = function () {
