@@ -3,12 +3,12 @@ const CONNECTION_STRING = "mongodb+srv://josuke:josuke1997@cluster0.gjvub.mongod
 export default async function handler (req, res) {
   const client = await MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
   const db = await client.db('Lu');
-  const body = req.query
-  var pResult = await db.collection("participants").insert({
-      id:'001',
-      result: '11'
+  var pResult = await db.collection("participants").insertOne({
+      id: req.body.pId,
+      name: req.body.pName,
+      manResp: req.body.manResp,
+      result: req.body.pData
   });
-  console.log(req.body);
   res.send(pResult);
 }
 

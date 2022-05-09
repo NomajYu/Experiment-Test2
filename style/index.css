@@ -5,6 +5,10 @@
     border-radius: 8px
 }
 
+.top15 {
+    margin-top: 15px;
+}
+
 .mt15 > div {
     margin-top: 15px;
 }

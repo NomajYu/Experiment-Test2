@@ -14,6 +14,8 @@
  /* global jsPsych, math, numeric, PIXI, jsPsychModule */
 
  /* exported jsPsychPsychophysics */
+ let jsPsych = initJsPsych({});
+
 
  var jsPsychPsychophysics = (function (jspsych) {
   "use strict";
