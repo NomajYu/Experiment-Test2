@@ -3,26 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@jspsych/plugin-fullscreen": "^1.1.0",
-    "@jspsych/plugin-html-keyboard-response": "^1.1.0",
-    "@jspsych/plugin-image-keyboard-response": "^1.1.0",
-    "@jspsych/plugin-instructions": "^1.1.0",
-    "@jspsych/plugin-preload": "^1.1.0",
-    "@jspsych/plugin-survey-text": "^1.1.0",
-    "jquery": "^3.6.0",
-    "jspsych": "^7.2.1",
     "mongodb": "^4.5.0",
     "typescript": "^4.6.4"
   },
   "devDependencies": {
     "@types/mongodb": "^4.0.7",
-    "@vercel/node": "^1.15.0",
-    "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2"
+    "@vercel/node": "^1.15.0"
   }
 }

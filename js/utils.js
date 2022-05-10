@@ -1,5 +1,3 @@
-import $ from 'jquery'
-
 let arrayOfMan = [];
 let arrayOfWoman = [];
 let jyList = [];
@@ -149,15 +147,3 @@ function upload(pData, pId, pName, manResp) {
         }
     });
 }
-
-export let utils = {
-    arrayOfMan,
-    arrayOfWoman,
-    imgList,
-    voiceList,
-    arrayOfPractice,
-    cuePath,
-    targetPath,
-    voicePath,
-    upload
-};

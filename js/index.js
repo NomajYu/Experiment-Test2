@@ -1,11 +1,3 @@
-import {utils} from './utils.js'
-import {initJsPsych} from 'jspsych';
-import jsPsychPreload from '@jspsych/plugin-preload';
-import jsPsychHtmlKeyboardResponse from '@jspsych/plugin-html-keyboard-response';
-import jsPsychImageKeyboardResponse from '@jspsych/plugin-image-keyboard-response';
-import jsPsychInstructions from '@jspsych/plugin-instructions';
-import jsPsychSurveyText from '@jspsych/plugin-survey-text';
-import jsPsychFullscreen from '@jspsych/plugin-fullscreen';
 let expName = '实验结果';
 let timeline = []
 let pId = '';
@@ -30,8 +22,8 @@ var enter_fullscreen = {
 //预加载
 let preload = {
     type: jsPsychPreload,
-    images: [utils.imgList],
-    audio: utils.voiceList,
+    images: [imgList],
+    audio: voiceList,
     show_detailed_errors: true,
     message: `<div>正在加载资源，请稍后</div>`
 }
@@ -115,7 +107,7 @@ let fixation = {
 let cueDirect = {
     type: jsPsychImageKeyboardResponse,
     stimulus: function () {
-        let directImg = utils.cuePath + jsPsych.timelineVariable('dg') + '.png'
+        let directImg = cuePath + jsPsych.timelineVariable('dg') + '.png'
         return directImg
     },
     trial_duration: 1500,
@@ -127,7 +119,7 @@ let cueDirect = {
 let image_object = {
     obj_type: 'image',
     file: function () {
-        let img = utils.cuePath + jsPsych.timelineVariable('cue') + '.png';
+        let img = cuePath + jsPsych.timelineVariable('cue') + '.png';
         return img;
     },
     show_start_time: 0
@@ -137,7 +129,7 @@ let image_object = {
 let sound_object = {
     obj_type: 'sound',
     file: function () {
-        let voice = utils.voicePath + jsPsych.timelineVariable('voice') + '.wav';
+        let voice = voicePath + jsPsych.timelineVariable('voice') + '.wav';
         return voice;
     },
     show_start_time: 0,
@@ -156,7 +148,7 @@ let cueAvert = {
 let target = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: function () {
-        let targetImg = utils.targetPath + jsPsych.timelineVariable('target') + '.png';
+        let targetImg = targetPath + jsPsych.timelineVariable('target') + '.png';
         let degree = jsPsych.timelineVariable('direction') == 'd1' ? '-105%' : '105%';
         return `
                   <div style="transform: translateX(${degree})"><img src="${targetImg}"></div>
@@ -248,7 +240,7 @@ let uploadData = {
     trial_duration: 10000,
     on_start: function() {
         let pData = jsPsych.data.get().csv()
-        utils.upload(pData,pId,pName,manResp)
+        upload(pData,pId,pName,manResp)
     }
 }
 
@@ -270,7 +262,7 @@ let end = {
 // 封装一个试次
 let a_trial = {
     timeline: [fixation, cueDirect, cueAvert, target, rate],
-    timeline_variables: utils.arrayOfPractice,
+    timeline_variables: arrayOfPractice,
     randomize_order: true,
 }
 
@@ -291,14 +283,14 @@ let practice_trials = {
 //block1
 let block_1 = {
     timeline: [fixation, cueDirect, cueAvert, target, rate],
-    timeline_variables: utils.arrayOfMan,
+    timeline_variables: arrayOfMan,
     randomize_order: true,
 }
 
 //block2
 let block_2 = {
     timeline: [fixation, cueDirect, cueAvert, target, rate],
-    timeline_variables: utils.arrayOfWoman,
+    timeline_variables: arrayOfWoman,
     randomize_order: true,
 }
 
