@@ -126,7 +126,7 @@ function upload(pData, pId, pName, manResp) {
         //提交数据的类型 POST GET
         type: "POST",
         //提交的网址
-        url: "http://localhost:3000/api/myFirstApi",
+        url: "https://luexperiment.vercel.app/api/addResults",//http://localhost:3000/api/myFirstApi
         //提交的数据   该参数为属性值类型的参数
         data: {
             pId,
